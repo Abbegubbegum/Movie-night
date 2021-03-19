@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +9,15 @@ html,
 body {
   min-height: 100vh;
   min-width: 100vw;
+  background-color: rgb(22, 22, 41);
+}
+
+h1 {
+  font-size: 4rem;
+  font-family: "Monoton", cursive;
+}
+
+main {
+  text-align: center;
+  color: rgb(212, 67, 67);
 }

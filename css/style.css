@@ -21,6 +21,25 @@ h2 {
   margin: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: rgb(212, 67, 67);
+  font-size: 1.5rem;
+}
+
+a:hover {
+  color: rgb(245, 155, 155);
+}
+
+.current {
+  background-color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 main {
   text-align: center;
   color: rgb(212, 67, 67);

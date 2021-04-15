@@ -6,6 +6,8 @@ let input = document.querySelector("#text-input");
 let output = document.querySelector("[data-output]");
 let guessTitle = document.querySelector("[data-guess]");
 let continueButton = document.querySelector("[data-button]");
+let movieImg = new Image();
+
 let guessYear;
 
 yearUpdate();
@@ -14,14 +16,13 @@ async function guess(name) {
   let response = await fetch(API_URL + "&t=" + name + "&type=movie");
   let data = await response.json();
 
-  console.log(data);
-
-  console.log(data.Error);
   if (data.Error === "Movie not found!") {
     failMessage();
   } else {
     outputGuess(data.Year == guessYear);
   }
+
+  fetchImg(data);
 }
 
 function getRandomInt(max) {
@@ -38,7 +39,6 @@ form.addEventListener("submit", (e) => {
   let textInput = input.value.trim();
 
   if (textInput === "") {
-    console.log("blank");
     return;
   }
 
@@ -48,8 +48,6 @@ form.addEventListener("submit", (e) => {
 });
 
 function outputGuess(correct) {
-  console.log(correct);
-
   if (correct) {
     guessTitle.innerText = "Correct!";
   } else {
@@ -68,4 +66,8 @@ function reset() {
 function failMessage() {
   guessTitle.innerText = "Movie Not Found!";
   guessTitle.classList.remove("noshow");
+}
+
+function fetchImg(data) {
+  console.log(data);
 }

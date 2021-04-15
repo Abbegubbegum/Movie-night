@@ -6,7 +6,7 @@ let input = document.querySelector("#text-input");
 let output = document.querySelector("[data-output]");
 let guessTitle = document.querySelector("[data-guess]");
 let continueButton = document.querySelector("[data-button]");
-let movieImg = new Image();
+let moviePoster = document.querySelector("#movie-poster");
 
 let guessYear;
 
@@ -70,4 +70,5 @@ function failMessage() {
 
 function fetchImg(data) {
   console.log(data);
+  moviePoster.setAttribute("src", data.Poster);
 }

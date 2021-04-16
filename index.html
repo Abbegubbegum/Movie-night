@@ -16,18 +16,24 @@
       <a href=""></a>
     </nav>
     <main>
-      <h1 class="title moviefont">Guess The Movie</h1>
-      <h2>Name A Movie From This Year</h2>
-      <h2 data-year></h2>
-      <form data-form autocomplete="off">
-        <input type="text" id="text-input" autofocus />
-      </form>
-      <div data-output>
-        <h2 class="noshow" data-guess></h2>
-        <button class="noshow" onclick="reset()" data-button>Next</button>
-        <img id="movie-poster" src="" alt="The movie poster" />
-        <button class="skipbutton" onclick="reset()">Skip</button>
+      <div>
+        <h1 class="title moviefont">Guess The Movie</h1>
+        <h2>Name A Movie From This Year</h2>
+        <h2 data-year></h2>
+        <form data-form autocomplete="off">
+          <input type="text" id="text-input" autofocus />
+        </form>
+        <div data-output>
+          <h2 class="noshow" data-guess></h2>
+          <button class="noshow" onclick="reset()" data-button>Next</button>
+        </div>
+      </div>
+      <div>
+        <img id="movie-poster" class="noshow" alt="The poster of the movie" />
       </div>
     </main>
+    <footer>
+      <button class="skipbutton" onclick="reset()">Skip➩</button>
+    </footer>
   </body>
 </html>

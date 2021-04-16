@@ -20,9 +20,8 @@ async function guess(name) {
     failMessage();
   } else {
     outputGuess(data.Year == guessYear);
+    fetchImg(data);
   }
-
-  fetchImg(data);
 }
 
 function getRandomInt(max) {
@@ -55,17 +54,20 @@ function outputGuess(correct) {
   }
   continueButton.classList.remove("noshow");
   guessTitle.classList.remove("noshow");
+  moviePoster.classList.remove("noshow");
 }
 
 function reset() {
   yearUpdate();
   continueButton.classList.add("noshow");
   guessTitle.classList.add("noshow");
+  moviePoster.classList.add("noshow");
 }
 
 function failMessage() {
   guessTitle.innerText = "Movie Not Found!";
   guessTitle.classList.remove("noshow");
+  moviePoster.classList.add("noshow");
 }
 
 function fetchImg(data) {

@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/script.js"></script>
-    <title>Actors</title>
+    <script src="./js/actors.js" defer></script>
+    <title>Movie Night!</title>
   </head>
   <body>
     <nav>
@@ -16,16 +16,25 @@
       <a href=""></a>
     </nav>
     <main>
-      <h1 class="title moviefont">Guess The Movie</h1>
-      <h2>Name A Movie From This Year</h2>
-      <h2 data-year></h2>
-      <form data-form autocomplete="off">
-        <input type="text" id="text-input" autofocus />
-      </form>
-      <div data-output>
-        <h2 class="noshow" data-guess></h2>
-        <button class="noshow" onclick="reset()" data-button>Next</button>
+      <div>
+        <h1 class="title moviefont">Name The Movie</h1>
+        <h2>Name A Movie With This Actor</h2>
+        <h2 data-actor></h2>
+        <form data-form autocomplete="off">
+          <input type="text" id="text-input" autofocus />
+        </form>
+        <div data-output>
+          <h2 class="noshow" data-guess></h2>
+          <button class="noshow" onclick="reset()" data-button>Next</button>
+        </div>
+      </div>
+      <div>
+        <img id="movie-poster" class="noshow" alt="The poster of the movie" />
+        <p id="rating-text" class="noshow"></p>
       </div>
     </main>
+    <footer>
+      <button class="skipbutton" onclick="reset()">Skip➩</button>
+    </footer>
   </body>
 </html>

@@ -11,26 +11,13 @@ let guessYear;
 
 yearUpdate();
 
-async function guess(name) {
-  let response = await fetch(API_URL + "&t=" + name + "&type=movie");
-  let data = await response.json();
-
-  if (data.Error === "Movie not found!") {
-    failMessage();
-  } else {
-    outputGuess(data.Year == guessYear);
-    fetchImg(data);
-    fetchRating(data);
-  }
+function yearUpdate() {
+  guessYear = getRandomInt(20) + 2000;
+  yearOutput.innerText = guessYear;
 }
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
-}
-
-function yearUpdate() {
-  guessYear = getRandomInt(20) + 2000;
-  yearOutput.innerText = guessYear;
 }
 
 form.addEventListener("submit", (e) => {
@@ -46,6 +33,21 @@ form.addEventListener("submit", (e) => {
   input.value = "";
 });
 
+async function guess(name) {
+  let response = await fetch(API_URL + "&t=" + name + "&type=movie");
+  let data = await response.json();
+
+  console.log(data);
+
+  if (data.Error === "Movie not found!") {
+    failMessage();
+  } else {
+    outputGuess(data.Year == guessYear);
+    fetchImg(data);
+    fetchRating(data);
+  }
+}
+
 function outputGuess(correct) {
   if (correct) {
     guessTitle.innerText = "Correct!";
@@ -58,6 +60,13 @@ function outputGuess(correct) {
   ratingOutput.classList.remove("noshow");
 }
 
+function failMessage() {
+  guessTitle.innerText = "Movie Not Found!";
+  guessTitle.classList.remove("noshow");
+  moviePoster.classList.add("noshow");
+  moviePoster.classList.add("noshow");
+}
+
 function reset() {
   yearUpdate();
   continueButton.classList.add("noshow");
@@ -66,15 +75,7 @@ function reset() {
   ratingOutput.classList.add("noshow");
 }
 
-function failMessage() {
-  guessTitle.innerText = "Movie Not Found!";
-  guessTitle.classList.remove("noshow");
-  moviePoster.classList.add("noshow");
-  moviePoster.classList.add("noshow");
-}
-
 function fetchImg(data) {
-  console.log(data);
   moviePoster.setAttribute("src", data.Poster);
 }
 

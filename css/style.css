@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap");
 
 * {
@@ -16,6 +15,7 @@ body {
   color: rgb(212, 67, 67);
   display: grid;
   grid-template-rows: 5vh 1fr 10vh;
+  text-align: center;
 }
 
 p {

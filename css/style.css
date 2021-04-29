@@ -18,6 +18,10 @@ body {
   grid-template-rows: 5vh 1fr 10vh;
 }
 
+p {
+  font-size: 2rem;
+}
+
 h1 {
   font-size: 4rem;
 }
@@ -34,10 +38,6 @@ a {
 
 a:hover {
   color: rgb(245, 155, 155);
-}
-
-.current {
-  background-color: white;
 }
 
 nav {
@@ -83,6 +83,10 @@ button {
 
 .noshow {
   display: none;
+}
+
+.current {
+  background-color: white;
 }
 
 @media only screen and (min-width: 600px) {

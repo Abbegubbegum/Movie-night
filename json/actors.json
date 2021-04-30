@@ -630,13 +630,6 @@
     "objectID": "551487170"
   },
   {
-    "name": "Steven Spielberg",
-    "rating": 802,
-    "image_path": "/pOK15UNaw75Bzj7BQO1ulehbPPm.jpg",
-    "alternative_name": null,
-    "objectID": "551487200"
-  },
-  {
     "name": "Ashley Greene",
     "rating": 793,
     "image_path": "/afm3DTK2oclpiiiuDIrJaDU2XJj.jpg",
@@ -1785,13 +1778,6 @@
     "objectID": "551488830"
   },
   {
-    "name": "Quentin Tarantino",
-    "rating": 561,
-    "image_path": "/6grjDWpEIPL5QdRbUZFxVEp5TCd.jpg",
-    "alternative_name": "Quentin Jerome Tarantino",
-    "objectID": "551488860"
-  },
-  {
     "name": "Mia Kirshner",
     "rating": 561,
     "image_path": "/pgQw5mlHRwWKBwLMdMj2jqiwK5D.jpg",
@@ -2084,13 +2070,6 @@
     "image_path": "/xPcfVq2UMihLNmPvYhFXV0IXiwF.jpg",
     "alternative_name": "Rachael Gillies",
     "objectID": "551489260"
-  },
-  {
-    "name": "James Cameron",
-    "rating": 534,
-    "image_path": "/6Zk8h1XsPGKUM8M8cKUHAnmnc8O.jpg",
-    "alternative_name": null,
-    "objectID": "551489290"
   },
   {
     "name": "Jonah Hill",

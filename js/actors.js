@@ -57,6 +57,7 @@ async function guess(name) {
 function processGuess(data) {
   let list = data.Actors.split(", ");
   console.log(list);
+  correctGuess = false;
   list.forEach((e) => {
     if (e === guessActor) {
       correctGuess = true;
@@ -80,7 +81,7 @@ function failMessage() {
   guessTitle.innerText = "Movie Not Found!";
   guessTitle.classList.remove("noshow");
   moviePoster.classList.add("noshow");
-  moviePoster.classList.add("noshow");
+  ratingOutput.classList.add("noshow");
 }
 
 function reset() {

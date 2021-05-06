@@ -4,7 +4,6 @@ let form = document.querySelector("[data-form]");
 let input = document.querySelector("#text-input");
 let output = document.querySelector("[data-output]");
 let guessTitle = document.querySelector("[data-guess]");
-let continueButton = document.querySelector("[data-button]");
 let moviePoster = document.querySelector("#movie-poster");
 let ratingOutput = document.querySelector("#rating-text");
 let guessYear;
@@ -54,7 +53,6 @@ function outputGuess(correct) {
   } else {
     guessTitle.innerText = "Fail!";
   }
-  continueButton.classList.remove("noshow");
   guessTitle.classList.remove("noshow");
   moviePoster.classList.remove("noshow");
   ratingOutput.classList.remove("noshow");
@@ -69,7 +67,6 @@ function failMessage() {
 
 function reset() {
   yearUpdate();
-  continueButton.classList.add("noshow");
   guessTitle.classList.add("noshow");
   moviePoster.classList.add("noshow");
   ratingOutput.classList.add("noshow");

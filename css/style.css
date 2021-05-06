@@ -14,7 +14,7 @@ body {
   background-color: rgb(22, 22, 41);
   color: rgb(212, 67, 67);
   display: grid;
-  grid-template-rows: 5vh 1fr 10vh;
+  grid-template-rows: auto 5vh 1fr;
   text-align: center;
 }
 
@@ -24,6 +24,7 @@ p {
 
 h1 {
   font-size: 4rem;
+  white-space: nowrap;
 }
 
 h2 {
@@ -34,6 +35,7 @@ a {
   text-decoration: none;
   color: inherit;
   font-size: 1.5rem;
+  padding: 0.5rem;
 }
 
 a:hover {
@@ -77,6 +79,10 @@ button {
   font-size: 2rem;
 }
 
+.skipbutton:hover {
+  color: rgb(245, 155, 155);
+}
+
 .moviefont {
   font-family: "Monoton", cursive;
 }
@@ -86,10 +92,12 @@ button {
 }
 
 .current {
-  background-color: white;
+  color: rgb(251, 126, 9);
+  border: 0.1rem solid;
+  border-radius: 20%;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 650px) {
   main {
     display: grid;
     grid-template-columns: 2fr 1fr;

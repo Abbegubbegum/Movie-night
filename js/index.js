@@ -43,7 +43,7 @@ async function guess(name) {
   if (data.Error === "Movie not found!") {
     failMessage();
   } else {
-    outputGuess(data.Year === guessYear);
+    outputGuess(data.Year == guessYear);
     fetchImg(data);
     fetchInfo(data);
   }

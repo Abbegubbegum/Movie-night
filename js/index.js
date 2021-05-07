@@ -1,4 +1,4 @@
-let API_URL = "http://www.omdbapi.com/?apikey=84f49e03";
+let API_URL = "https://www.omdbapi.com/?apikey=84f49e03";
 let yearOutput = document.querySelector("[data-year]");
 let form = document.querySelector("[data-form]");
 let input = document.querySelector("#text-input");

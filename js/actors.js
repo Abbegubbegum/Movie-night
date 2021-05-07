@@ -1,11 +1,13 @@
-let API_URL = "http://www.omdbapi.com/?apikey=84f49e03";
-let actorOutput = document.querySelector("[data-actor]");
+let API_URL = "https://www.omdbapi.com/?apikey=84f49e03";
 let form = document.querySelector("[data-form]");
 let input = document.querySelector("#text-input");
 let output = document.querySelector("[data-output]");
-let guessTitle = document.querySelector("[data-guess]");
+let guessOutput = document.querySelector("[data-guess]");
 let moviePoster = document.querySelector("#movie-poster");
 let ratingOutput = document.querySelector("#rating-text");
+
+let actorOutput = document.querySelector("[data-actor]");
+let actorText = document.querySelector("#actor-output");
 let guessActor;
 let correctGuess = false;
 
@@ -49,7 +51,7 @@ async function guess(name) {
     processGuess(data);
     outputGuess(correctGuess);
     fetchImg(data);
-    fetchRating(data);
+    fetchInfo(data);
   }
 }
 
@@ -66,27 +68,30 @@ function processGuess(data) {
 
 function outputGuess(correct) {
   if (correct) {
-    guessTitle.innerText = "Correct!";
+    guessOutput.innerText = "Correct!";
   } else {
-    guessTitle.innerText = "Fail!";
+    guessOutput.innerText = "Fail!";
   }
-  guessTitle.classList.remove("noshow");
+  guessOutput.classList.remove("noshow");
   moviePoster.classList.remove("noshow");
   ratingOutput.classList.remove("noshow");
+  actorText.classList.remove("noshow");
 }
 
 function failMessage() {
-  guessTitle.innerText = "Movie Not Found!";
-  guessTitle.classList.remove("noshow");
+  guessOutput.innerText = "Movie Not Found!";
+  guessOutput.classList.remove("noshow");
   moviePoster.classList.add("noshow");
   ratingOutput.classList.add("noshow");
+  actorText.classList.add("noshow");
 }
 
 function reset() {
   actorUpdate();
-  guessTitle.classList.add("noshow");
+  guessOutput.classList.add("noshow");
   moviePoster.classList.add("noshow");
   ratingOutput.classList.add("noshow");
+  actorText.classList.add("noshow");
   correctGuess = false;
 }
 
@@ -94,7 +99,8 @@ function fetchImg(data) {
   moviePoster.setAttribute("src", data.Poster);
 }
 
-function fetchRating(data) {
+function fetchInfo(data) {
+  actorText.innerText = data.Actors;
   ratingOutput.innerText = "";
   data.Ratings.forEach((e) => {
     if (e.Source === "Rotten Tomatoes") {

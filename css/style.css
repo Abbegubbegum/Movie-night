@@ -37,6 +37,8 @@ a {
   color: inherit;
   font-size: 1.5rem;
   padding: 0.5rem;
+  border: 0.1rem solid;
+  border-radius: 20%;
 }
 
 a:hover {
@@ -94,8 +96,6 @@ button {
 
 .current {
   color: rgb(251, 126, 9);
-  border: 0.1rem solid;
-  border-radius: 20%;
 }
 
 @media only screen and (min-width: 650px) {

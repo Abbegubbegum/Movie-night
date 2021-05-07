@@ -104,7 +104,7 @@ function fetchInfo(data) {
   ratingOutput.innerText = "";
   data.Ratings.forEach((e) => {
     if (e.Source === "Rotten Tomatoes") {
-      ratingOutput.innerText = e.Value + " 🍅";
+      ratingOutput.innerText = "Rating: " + e.Value + " 🍅";
     }
   });
 }

@@ -14,7 +14,7 @@ body {
   background-color: rgb(22, 22, 41);
   color: rgb(212, 67, 67);
   display: grid;
-  grid-template-rows: auto 5vh 1fr;
+  grid-template-rows: auto auto 1fr;
   text-align: center;
 }
 
@@ -98,9 +98,9 @@ button {
   color: rgb(251, 126, 9);
 }
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 700px) {
   main {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }

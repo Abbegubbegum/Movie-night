@@ -9,11 +9,15 @@ let ratingOutput = document.querySelector("#rating-text");
 let yearOutput = document.querySelector("[data-year]");
 let yearText = document.querySelector("#year-output");
 let guessYear;
+let guessYearPrevious;
 
 yearUpdate();
 
 function yearUpdate() {
-  guessYear = getRandomInt(20) + 2000;
+  guessYearPrevious = guessYear;
+  while (guessYear === guessYearPrevious) {
+    guessYear = getRandomInt(20) + 2000;
+  }
   yearOutput.innerText = guessYear;
 }
 

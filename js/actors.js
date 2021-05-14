@@ -9,6 +9,7 @@ let ratingOutput = document.querySelector("#rating-text");
 let actorOutput = document.querySelector("[data-actor]");
 let actorText = document.querySelector("#actor-output");
 let guessActor;
+let guessActorPrevious;
 let correctGuess = false;
 
 actorUpdate();
@@ -17,7 +18,11 @@ async function actorUpdate() {
   let response = await fetch("./json/actors.json");
   let data = await response.json();
 
-  guessActor = data[getRandomInt(500)].name;
+  let guessActorPrevious = guessActor;
+
+  while (guessActor === guessActorPrevious) {
+    guessActor = data[getRandomInt(500)].name;
+  }
 
   actorOutput.innerText = guessActor;
 }

@@ -1,6 +1,6 @@
 let API_URL = "https://www.omdbapi.com/?apikey=84f49e03";
 let form = document.querySelector("[data-form]");
-let input = document.querySelector("#text-input");
+let input = document.querySelector("#guess-input");
 let output = document.querySelector("[data-output]");
 let guessOutput = document.querySelector("[data-guess]");
 let moviePoster = document.querySelector("#movie-poster");

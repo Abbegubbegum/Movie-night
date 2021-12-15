@@ -1,4 +1,4 @@
-let API_URL = "https://www.omdbapi.com/?apikey=84f49e03";
+let IMDB_API_URL = "https://www.omdbapi.com/?apikey=84f49e03";
 let form = document.querySelector("[data-form]");
 let input = document.querySelector("#guess-input");
 let output = document.querySelector("[data-output]");
@@ -11,23 +11,74 @@ let actorText = document.querySelector("#actor-output");
 let guessActor;
 let guessActorPrevious;
 let correctGuess = false;
+let actorList;
 
-actorUpdate();
+let actorPictureOutput = document.querySelector("#actor-picture");
+let ACTOR_ID_API_URL =
+  "https://data-imdb1.p.rapidapi.com/actor/imdb_id_byName/";
+let ACTOR_IMAGE_API_URL = "https://data-imdb1.p.rapidapi.com/actor/id/";
+let actorAPIHeader = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
+    "x-rapidapi-key": "b4c4aa17demsh69fb0b28c09541ep11aca9jsneea17ac9c7a1",
+  },
+};
 
-async function actorUpdate() {
+ActorUpdate();
+
+async function ActorUpdate() {
   let response = await fetch("./json/actors.json");
-  let data = await response.json();
+  let actorList = await response.json();
 
   let guessActorPrevious = guessActor;
 
   while (guessActor === guessActorPrevious) {
-    guessActor = data[getRandomInt(500)].name;
+    guessActor = actorList[GetRandomInt(500)].name;
   }
 
   actorOutput.innerText = guessActor;
+  ActorPictureUpdate();
 }
 
-function getRandomInt(max) {
+async function ActorPictureUpdate() {
+  let processedActorName = guessActor.toLowerCase().replaceAll(" ", "%20");
+
+  let actorId = await GetActorID(processedActorName);
+  let actorImage = await GetActorImage(actorId);
+
+  actorPictureOutput.setAttribute("src", actorImage);
+}
+
+async function GetActorID(actor) {
+  let response = await fetch(ACTOR_ID_API_URL + actor + "/", actorAPIHeader);
+  let responseData = await response.json();
+
+  console.log(responseData.results[0]);
+
+  if (responseData.results.length > 0) {
+    for (let i = 0; i < responseData.results.length; i++) {
+      let currentName = responseData.results[i].name
+        .toLowerCase()
+        .replaceAll(" ", "%20");
+      if (currentName === actor) {
+        return responseData.results[i].imdb_id;
+      }
+    }
+  }
+  console.log("ACTOR ID NOT FOUND");
+}
+
+async function GetActorImage(actorId) {
+  let response = await fetch(
+    ACTOR_IMAGE_API_URL + actorId + "/",
+    actorAPIHeader
+  );
+  let responseData = await response.json();
+  console.log(responseData);
+  return await responseData.results.image_url;
+}
+function GetRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
@@ -39,28 +90,29 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  guess(textInput);
+  Guess(textInput);
 
   input.value = "";
 });
 
-async function guess(name) {
-  let response = await fetch(API_URL + "&t=" + name + "&type=movie");
+async function Guess(name) {
+  let response = await fetch(IMDB_API_URL + "&t=" + name + "&type=movie");
+  console.log(response);
   let data = await response.json();
 
   console.log(data);
 
   if (data.Error === "Movie not found!") {
-    failMessage();
+    FailMessage();
   } else {
-    processGuess(data);
-    outputGuess(correctGuess);
-    fetchImg(data);
-    fetchInfo(data);
+    ProcessGuess(data);
+    OutputGuess(correctGuess);
+    FetchImg(data);
+    FetchInfo(data);
   }
 }
 
-function processGuess(data) {
+function ProcessGuess(data) {
   let list = data.Actors.split(", ");
   console.log(list);
   correctGuess = false;
@@ -71,7 +123,7 @@ function processGuess(data) {
   });
 }
 
-function outputGuess(correct) {
+function OutputGuess(correct) {
   if (correct) {
     guessOutput.innerText = "Correct!";
   } else {
@@ -83,7 +135,7 @@ function outputGuess(correct) {
   actorText.classList.remove("noshow");
 }
 
-function failMessage() {
+function FailMessage() {
   guessOutput.innerText = "Movie Not Found!";
   guessOutput.classList.remove("noshow");
   moviePoster.classList.add("noshow");
@@ -91,8 +143,8 @@ function failMessage() {
   actorText.classList.add("noshow");
 }
 
-function reset() {
-  actorUpdate();
+function Reset() {
+  ActorUpdate();
   guessOutput.classList.add("noshow");
   moviePoster.classList.add("noshow");
   ratingOutput.classList.add("noshow");
@@ -100,11 +152,11 @@ function reset() {
   correctGuess = false;
 }
 
-function fetchImg(data) {
+function FetchImg(data) {
   moviePoster.setAttribute("src", data.Poster);
 }
 
-function fetchInfo(data) {
+function FetchInfo(data) {
   actorText.innerText = data.Actors;
   ratingOutput.innerText = "";
   data.Ratings.forEach((e) => {

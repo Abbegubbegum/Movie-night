@@ -18,7 +18,7 @@
       <a href="actor.html" class="current">Actors</a>
     </nav>
     <main>
-      <div>
+      <div id="input-div">
         <form data-form autocomplete="off">
           <label>
             <h2>Name A Movie With This Actor</h2>
@@ -29,11 +29,12 @@
         <div data-output>
           <h2 class="noshow" data-guess></h2>
         </div>
-        <button class="skipbutton" onclick="reset()">Skip➩</button>
+        <button class="skipbutton" onclick="Reset()">Skip➩</button>
+        <img id="actor-picture" alt="Picture not Found" />
       </div>
       <div>
         <p id="actor-output" class="noshow"></p>
-        <img id="movie-poster" class="noshow" alt="The poster of the movie" />
+        <img id="movie-poster" class="noshow" alt="Picture not Found" />
         <p id="rating-text" class="noshow"></p>
       </div>
     </main>

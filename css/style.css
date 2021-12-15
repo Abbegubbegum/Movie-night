@@ -65,6 +65,12 @@ button {
   border: 0;
 }
 
+#input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #guess-input {
   font-family: "Roboto Mono", monospace;
   font-size: 1.5rem;
